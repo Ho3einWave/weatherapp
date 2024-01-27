@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    font-family: "Rubik", sans-serif;
+    background: #e9ecef;
+}
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #e9ecef;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #18181b;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #18181b;
+}

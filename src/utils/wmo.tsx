@@ -1,0 +1,86 @@
+export default (code: number) => {
+    const wmo = {
+        "0": "Clear",
+        "1": "Clear",
+        "2": "Partly Cloudy",
+        "3": "Cloudy",
+        "45": "Fog",
+        "48": "Rime Fog",
+        "51": "Drizzle-Light",
+        "53": "Drizzle-Moderate",
+        "55": "Drizzle-Dense",
+        "56": "Freezing Drizzle-Light",
+        "57": "Freezing Drizzle-Dense",
+        "61": "Rain-Slight",
+        "63": "Rain-Moderate",
+        "65": "Rain-Heavy",
+        "66": "Freezing Rain-Light",
+        "67": "Freezing Rain-Heavy",
+        "71": "Snow-Slight",
+        "73": "Snow-Moderate",
+        "75": "Snow-Heavy",
+        "77": "Snow Grains",
+        "80": "Rain Showers-Slight",
+        "81": "Rain Showers-Moderate",
+        "82": "Rain Showers-Violent",
+        "85": "Snow Showers-Slight",
+        "86": "Snow Showers-Heavy",
+        "95": "Thunderstorm-Slight/Moderate",
+        "96": "Thunderstorm-Slight Hail",
+        "99": "Thunderstorm-Heavy Hail",
+    };
+    // @ts-expect-error
+    return wmo[`${code}`];
+};
+
+import {
+    WiCloudy,
+    WiDayRain,
+    WiDayRainMix,
+    WiDaySnow,
+    WiDaySprinkle,
+    WiDaySunny,
+    WiDaySunnyOvercast,
+    WiFog,
+    WiRain,
+    WiRainMix,
+    WiSnow,
+    WiSnowflakeCold,
+    WiStrongWind,
+    WiTornado,
+} from "react-icons/wi";
+
+export const wmoIcon = (code: number) => {
+    const wmo = {
+        "0": <WiDaySunny />,
+        "1": <WiDaySunny />,
+        "2": <WiDaySunnyOvercast />,
+        "3": <WiCloudy />,
+        "45": <WiFog />,
+        "48": <WiFog />,
+        "51": <WiDaySprinkle />,
+        "53": <WiDaySprinkle />,
+        "55": <WiDaySprinkle />,
+        "56": <WiRainMix />,
+        "57": <WiRainMix />,
+        "61": <WiDayRain />,
+        "63": <WiRainMix />,
+        "65": <WiRain />,
+        "66": <WiDayRainMix />,
+        "67": <WiDayRainMix />,
+        "71": <WiDaySnow />,
+        "73": <WiDaySnow />,
+        "75": <WiDaySnow />,
+        "77": <WiSnowflakeCold />,
+        "80": <WiRain />,
+        "81": <WiRain />,
+        "82": <WiRain />,
+        "85": <WiSnow />,
+        "86": <WiSnow />,
+        "95": <WiStrongWind />,
+        "96": <WiTornado />,
+        "99": <WiTornado />,
+    };
+    // @ts-expect-error
+    return wmo[`${code}`];
+};
