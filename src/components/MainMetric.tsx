@@ -2,7 +2,7 @@ import { WeatherResponse } from "../services/useWeather";
 import wmo from "../utils/wmo";
 const MainMetric = ({ data }: { data: WeatherResponse }) => {
     return (
-        <div className="min-h-[400px]  flex flex-col items-center justify-center text-center text-zinc-900">
+        <div className="min-h-[300px]  flex flex-col items-center justify-center text-center text-zinc-900">
             <div className="text-8xl font-bold relative w-fit">
                 {data.current.apparentTemperature.toFixed(0)}{" "}
                 <span className="text-2xl absolute -right-6">°C</span>

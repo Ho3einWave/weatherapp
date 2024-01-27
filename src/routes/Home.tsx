@@ -56,7 +56,7 @@ const Home = () => {
         <div className="max-w-[600px] lg:mx-auto lg:border-black lg:border-[3px] lg:mt-10 lg:rounded-[35px]">
             <div className="flex flex-col w-full ">
                 <div className="h-screen lg:h-[800px] lg:overflow-y-scroll flex flex-col justify-between py-5">
-                    <div className=" flex items-center justify-between px-5 mt-4">
+                    <div className=" flex items-center justify-between px-5 ">
                         <div>
                             <GoPlus />
                         </div>

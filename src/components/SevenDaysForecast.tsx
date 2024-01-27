@@ -6,14 +6,14 @@ import wmo, { wmoIcon } from "../utils/wmo";
 const SevenDaysForecast = ({ data }: { data: WeatherResponse }) => {
     return (
         <div className="px-4 py-4 w-11/12 max-h-[300px] mx-auto flex-grow rounded-[35px] border-[3px] border-zinc-900">
-            <div className="flex flex-col justify-between h-full">
+            <div className="flex flex-col justify-between h-full gap-2">
                 <div className="flex items-center gap-1">
                     <div className="text-white bg-zinc-900 p-1 rounded-full">
                         <MdOutlineCalendarMonth />
                     </div>{" "}
                     7-Day forecast
                 </div>
-                <div className="flex flex-col gap-4 text-xl ">
+                <div className="flex flex-col gap-2 text-lg ">
                     {range(1, 5, 1).map((item) => (
                         <div className="flex items-center w-full justify-between">
                             <div className="flex items-center">
