@@ -7,11 +7,9 @@ const url = "https://api.open-meteo.com/v1/forecast";
 const getWeatherRequest = async ({
     lat,
     long,
-    lang,
 }: {
     lat: number;
     long: number;
-    lang: string;
 }) => {
     const { data } = await axios.get<LocationName>(
         `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${long}&localityLanguage=en`

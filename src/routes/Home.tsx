@@ -49,7 +49,6 @@ const Home = () => {
             getWeather({
                 lat: location.lat,
                 long: location.long,
-                lang: i18n.language.split("-")[0],
             });
     }, [location]);
 
