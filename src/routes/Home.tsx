@@ -26,7 +26,7 @@ const Home = () => {
     const navigate = useNavigate();
 
     // Geo location hook
-    const { isGeolocationAvailable, getPosition } = useGeolocated({
+    const { getPosition } = useGeolocated({
         positionOptions: {
             enableHighAccuracy: true,
             timeout: 3000,
@@ -52,7 +52,7 @@ const Home = () => {
                 });
             }
         },
-        onError(positionError) {
+        onError(_) {
             if (!location) {
                 if (cities.length > 0) {
                     setLocation({ lat: cities[0].lat, long: cities[0].long });
