@@ -53,17 +53,16 @@ const Locations = () => {
                                 {item.location_details.city}
                             </div>
                         </div>
-                        {!item.isGPS && (
-                            <div
-                                className="text-4xl"
-                                onClick={() => {
-                                    removeCity(item);
-                                    setLocation(cities[0]);
-                                }}
-                            >
-                                <CiCircleRemove />
-                            </div>
-                        )}
+
+                        <div
+                            className="text-4xl"
+                            onClick={() => {
+                                removeCity(item);
+                                setLocation(cities[0]);
+                            }}
+                        >
+                            <CiCircleRemove />
+                        </div>
                     </div>
                 ))}
             </div>
