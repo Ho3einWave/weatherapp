@@ -23,7 +23,13 @@ const getWeatherRequest = async ({
             "apparent_temperature",
             "is_day",
         ],
-        hourly: "temperature_2m",
+        hourly: [
+            "temperature_2m",
+            "apparent_temperature",
+            "rain",
+            "weather_code",
+            "wind_speed_10m",
+        ],
         daily: [
             "weather_code",
             "temperature_2m_max",
@@ -69,6 +75,10 @@ const getWeatherRequest = async ({
                 hourly.interval()
             ).map((t) => new Date((t + utcOffsetSeconds) * 1000)),
             temperature2m: hourly.variables(0)!.valuesArray()!,
+            apparentTemperature: hourly.variables(1)!.valuesArray()!,
+            rain: hourly.variables(2)!.valuesArray()!,
+            weatherCode: hourly.variables(3)!.valuesArray()!,
+            windSpeed10m: hourly.variables(4)!.valuesArray()!,
         },
         daily: {
             time: range(

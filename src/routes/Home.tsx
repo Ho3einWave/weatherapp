@@ -12,6 +12,7 @@ import { GoPlus } from "react-icons/go";
 import { MdOutlineRefresh } from "react-icons/md";
 
 import { useLocation } from "../context/location";
+import TwentyFourHourForCast from "../components/TwentyFourHourForCast";
 const Home = () => {
     // i18n translation hook
     const { i18n } = useTranslation();
@@ -72,6 +73,7 @@ const Home = () => {
                         </>
                     )}
                 </div>
+                {data && <TwentyFourHourForCast data={data} />}
             </div>
         </div>
     );
