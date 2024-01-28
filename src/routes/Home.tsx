@@ -14,6 +14,8 @@ import { MdOutlineRefresh } from "react-icons/md";
 import { useLocation } from "../context/location";
 import TwentyFourHourForCast from "../components/TwentyFourHourForCast";
 import WindDirection from "../components/WindDirection";
+import Detail from "../components/Detail";
+import SunDetails from "../components/SunDetails";
 const Home = () => {
     // i18n translation hook
     const { i18n } = useTranslation();
@@ -62,26 +64,28 @@ const Home = () => {
                         <div className="cursor-pointer">
                             <GoPlus />
                         </div>
-                        <City isPending={isPending} data={data} />
+                        <City isPending={isPending} location={data?.location} />
                         <div onClick={getPosition} className="cursor-pointer">
                             <MdOutlineRefresh />
                         </div>
                     </div>
                     {data && (
                         <>
-                            <MainMetric data={data} />
-                            <SevenDaysForecast data={data} />
+                            <MainMetric data={data.weather} />
+                            <SevenDaysForecast data={data.weather} />
                         </>
                     )}
                 </div>
-                {data && <TwentyFourHourForCast data={data} />}
+                {data && <TwentyFourHourForCast data={data.weather} />}
                 {data && (
                     <div className="w-11/12 grid grid-cols-2 gap-2 mx-auto mt-5">
-                        <div>
-                            <WindDirection data={data} />
-                            <WindDirection data={data} />
+                        <div className="flex flex-col gap-2">
+                            <WindDirection data={data.weather} />
+                            <SunDetails data={data.weather} />
                         </div>
-                        <div></div>
+                        <div>
+                            <Detail data={data.weather} />
+                        </div>
                     </div>
                 )}
             </div>

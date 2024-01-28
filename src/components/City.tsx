@@ -1,19 +1,19 @@
 import { WiCloud } from "react-icons/wi";
 import { FaRegCircleCheck } from "react-icons/fa6";
 import { motion } from "framer-motion";
-import { WeatherResponse } from "../services/useWeather";
 import { useTranslation } from "react-i18next";
+import { LocationName } from "../services/useWeather.d";
 const City = ({
     isPending,
-    data,
+    location,
 }: {
     isPending: boolean;
-    data: WeatherResponse | undefined;
+    location: LocationName | undefined;
 }) => {
     const { t } = useTranslation();
     return (
         <div className="text-center relative">
-            <div>{data ? data.location.city : t("location")}</div>
+            <div>{location ? location.city : t("location")}</div>
             {isPending ? (
                 <motion.div
                     key={"update-icon"}

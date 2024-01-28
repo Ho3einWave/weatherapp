@@ -1,10 +1,10 @@
-import { WeatherResponse } from "../services/useWeather";
 import { MdOutlineCalendarMonth } from "react-icons/md";
 import range from "../utils/range";
 import wmo, { wmoIcon } from "../utils/wmo";
 import { motion } from "framer-motion";
 import getDayOfWeek from "../utils/getDayOfWeek";
-const SevenDaysForecast = ({ data }: { data: WeatherResponse }) => {
+import { WeatherApiRes } from "../services/useWeather.d";
+const SevenDaysForecast = ({ data }: { data: WeatherApiRes }) => {
     return (
         <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -29,19 +29,21 @@ const SevenDaysForecast = ({ data }: { data: WeatherResponse }) => {
                         >
                             <div className="flex items-center">
                                 <span className="text-3xl">
-                                    {wmoIcon(data.daily.weatherCode[item])}
+                                    {wmoIcon(data.daily.weather_code[item])}
                                 </span>
                                 {idx === 0
                                     ? "Today"
-                                    : getDayOfWeek(data.daily.time[item])}{" "}
-                                {wmo(data.daily.weatherCode[item])}
+                                    : getDayOfWeek(
+                                          new Date(data.daily.time[item])
+                                      )}{" "}
+                                {wmo(data.daily.weather_code[item])}
                             </div>
                             <div>
-                                {data.daily.apparentTemperatureMax[
+                                {data.daily.apparent_temperature_max[
                                     item
                                 ].toFixed(0)}
                                 °<span className="opacity-50">/</span>
-                                {data.daily.apparentTemperatureMin[
+                                {data.daily.apparent_temperature_min[
                                     item
                                 ].toFixed(0)}
                                 °

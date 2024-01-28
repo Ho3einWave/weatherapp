@@ -1,13 +1,13 @@
-import { WeatherResponse } from "../services/useWeather";
 import { motion } from "framer-motion";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { WiTime9 } from "react-icons/wi";
 import { wmoIcon } from "../utils/wmo";
 import formatTimeToHHMM from "../utils/formatTimeToHHMM";
+import { WeatherApiRes } from "../services/useWeather.d";
 const TwentyFourHourForCast = ({
     data,
 }: {
-    data: WeatherResponse | undefined;
+    data: WeatherApiRes | undefined;
 }) => {
     // This Filters the index's that are from now to 24 hour forward
     const weatherIdx = useMemo(
@@ -21,7 +21,9 @@ const TwentyFourHourForCast = ({
                     const now = new Date();
                     const next24Hours = new Date(now);
                     next24Hours.setHours(now.getHours() + 24);
-                    return item >= now && item <= next24Hours;
+                    return (
+                        new Date(item) >= now && new Date(item) <= next24Hours
+                    );
                 })
                 .map(({ idx }) => idx),
         [data]
@@ -65,7 +67,7 @@ const TwentyFourHourForCast = ({
     return (
         <motion.div
             initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0, transition: { delay: 0.1 } }}
             transition={{ delay: 0.3 }}
             className="px-4 py-4  w-11/12 max-h-[300px] mx-auto flex-grow rounded-[30px] border-[3px] border-zinc-900"
         >
@@ -100,24 +102,26 @@ const TwentyFourHourForCast = ({
                                 className="flex flex-col items-center gap-1"
                             >
                                 <div className="font-bold">
-                                    {data.hourly.apparentTemperature[
+                                    {data.hourly.apparent_temperature[
                                         item
                                     ].toFixed(0)}
                                     °
                                 </div>
                                 <div className="text-3xl">
-                                    {wmoIcon(data.hourly.weatherCode[item])}
+                                    {wmoIcon(data.hourly.weather_code[item])}
                                 </div>
 
                                 <div className="text-xs">
-                                    {data.hourly.windSpeed10m[item].toFixed(1)}
+                                    {data.hourly.wind_speed_10m[item].toFixed(
+                                        1
+                                    )}
                                     km/h
                                 </div>
                                 <div className="text-sm">
                                     {idx === 0
                                         ? "Now"
                                         : formatTimeToHHMM(
-                                              data.hourly.time[item]
+                                              new Date(data.hourly.time[item])
                                           )}
                                 </div>
                             </motion.div>
