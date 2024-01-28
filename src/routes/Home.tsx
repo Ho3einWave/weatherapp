@@ -13,6 +13,7 @@ import { MdOutlineRefresh } from "react-icons/md";
 
 import { useLocation } from "../context/location";
 import TwentyFourHourForCast from "../components/TwentyFourHourForCast";
+import WindDirection from "../components/WindDirection";
 const Home = () => {
     // i18n translation hook
     const { i18n } = useTranslation();
@@ -74,6 +75,15 @@ const Home = () => {
                     )}
                 </div>
                 {data && <TwentyFourHourForCast data={data} />}
+                {data && (
+                    <div className="w-11/12 grid grid-cols-2 gap-2 mx-auto mt-5">
+                        <div>
+                            <WindDirection data={data} />
+                            <WindDirection data={data} />
+                        </div>
+                        <div></div>
+                    </div>
+                )}
             </div>
         </div>
     );
