@@ -35,8 +35,8 @@ const Home = () => {
         onSuccess(pos) {
             const exist = cities.find(
                 (item) =>
-                    item.lat === pos.coords.latitude &&
-                    item.long === pos.coords.longitude
+                    item.lat.toFixed(2) === pos.coords.latitude.toFixed(2) &&
+                    item.long.toFixed(2) === pos.coords.longitude.toFixed(2)
             );
             if (!exist) {
                 addCity({
