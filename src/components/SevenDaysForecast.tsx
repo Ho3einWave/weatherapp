@@ -3,6 +3,7 @@ import { MdOutlineCalendarMonth } from "react-icons/md";
 import range from "../utils/range";
 import wmo, { wmoIcon } from "../utils/wmo";
 import { motion } from "framer-motion";
+import getDayOfWeek from "../utils/getDayOfWeek";
 const SevenDaysForecast = ({ data }: { data: WeatherResponse }) => {
     return (
         <motion.div
@@ -30,6 +31,9 @@ const SevenDaysForecast = ({ data }: { data: WeatherResponse }) => {
                                 <span className="text-3xl">
                                     {wmoIcon(data.daily.weatherCode[item])}
                                 </span>
+                                {idx === 0
+                                    ? "Today"
+                                    : getDayOfWeek(data.daily.time[item])}{" "}
                                 {wmo(data.daily.weatherCode[item])}
                             </div>
                             <div>

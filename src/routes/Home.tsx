@@ -54,15 +54,15 @@ const Home = () => {
     }, [location]);
 
     return (
-        <div className="max-w-[600px] lg:mx-auto lg:border-black lg:border-[3px] lg:mt-10 lg:rounded-[35px]">
+        <div className="max-w-[600px] mx-auto lg:max-h-[90vh] lg:overflow-y-auto lg:mx-auto lg:border-black lg:border-[3px] lg:mt-10 pb-5 lg:rounded-[35px]">
             <div className="flex flex-col w-full ">
                 <div className="h-screen lg:h-[800px] lg:overflow-y-scroll flex flex-col justify-between py-5">
                     <div className=" flex items-center justify-between px-5 ">
-                        <div>
+                        <div className="cursor-pointer">
                             <GoPlus />
                         </div>
                         <City isPending={isPending} data={data} />
-                        <div onClick={getPosition}>
+                        <div onClick={getPosition} className="cursor-pointer">
                             <MdOutlineRefresh />
                         </div>
                     </div>

@@ -68,7 +68,7 @@ const TwentyFourHourForCast = ({
             animate={{ opacity: 1, y: 0 }}
             className="px-4 py-4  w-11/12 max-h-[300px] mx-auto flex-grow rounded-[30px] border-[3px] border-zinc-900"
         >
-            <div className="flex flex-col justify-between h-full gap-2 relative">
+            <div className="flex flex-col justify-between h-full gap-3 relative">
                 <div className="flex items-center gap-1 ">
                     <div className="text-white bg-zinc-900 p-1 rounded-full">
                         <WiTime9 />
@@ -88,11 +88,17 @@ const TwentyFourHourForCast = ({
                     {data &&
                         weatherIdx &&
                         weatherIdx.map((item, idx) => (
-                            <div
+                            <motion.div
+                                initial={{ opacity: 0, y: 10 }}
+                                whileInView={{
+                                    opacity: 1,
+                                    y: 0,
+                                    transition: { delay: 0.1 },
+                                }}
                                 key={`24hour-item-${idx}`}
                                 className="flex flex-col items-center gap-1"
                             >
-                                <div>
+                                <div className="font-bold">
                                     {data.hourly.apparentTemperature[
                                         item
                                     ].toFixed(0)}
@@ -102,18 +108,18 @@ const TwentyFourHourForCast = ({
                                     {wmoIcon(data.hourly.weatherCode[item])}
                                 </div>
 
-                                <div>
+                                <div className="text-xs">
                                     {data.hourly.windSpeed10m[item].toFixed(1)}
                                     km/h
                                 </div>
-                                <div>
+                                <div className="text-sm">
                                     {idx === 0
                                         ? "Now"
                                         : formatTimeToHHMM(
                                               data.hourly.time[item]
                                           )}
                                 </div>
-                            </div>
+                            </motion.div>
                         ))}
                 </div>
             </div>
