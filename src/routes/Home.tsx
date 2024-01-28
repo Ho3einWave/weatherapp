@@ -10,32 +10,56 @@ import City from "../components/City";
 // ICONS
 import { GoPlus } from "react-icons/go";
 import { MdOutlineRefresh } from "react-icons/md";
-
+import { useNavigate } from "react-router-dom";
 import { useLocation } from "../context/location";
 import TwentyFourHourForCast from "../components/TwentyFourHourForCast";
 import WindDirection from "../components/WindDirection";
 import Detail from "../components/Detail";
 import SunDetails from "../components/SunDetails";
+import { useCities } from "../context/cities";
 const Home = () => {
     // i18n translation hook
     const { i18n } = useTranslation();
     const { location, setLocation } = useLocation();
+    const { cities, addCity } = useCities();
+    // navigation
+    const navigate = useNavigate();
 
     // Geo location hook
-    const { getPosition } = useGeolocated({
+    const { isGeolocationAvailable, getPosition } = useGeolocated({
         positionOptions: {
             enableHighAccuracy: true,
             timeout: 3000,
         },
         userDecisionTimeout: 5000,
         onSuccess(pos) {
-            setLocation({
-                lat: pos.coords.latitude,
-                long: pos.coords.longitude,
-            });
+            const exist = cities.find(
+                (item) =>
+                    item.lat === pos.coords.latitude &&
+                    item.long === pos.coords.longitude
+            );
+            if (!exist) {
+                addCity({
+                    lat: pos.coords.latitude,
+                    long: pos.coords.longitude,
+                    isGPS: true,
+                });
+            }
+            if (!location) {
+                setLocation({
+                    lat: pos.coords.latitude,
+                    long: pos.coords.longitude,
+                });
+            }
         },
         onError(positionError) {
-            console.log(positionError);
+            if (!location) {
+                if (cities.length > 0) {
+                    setLocation({ lat: cities[0].lat, long: cities[0].long });
+                } else {
+                    navigate("/search");
+                }
+            }
         },
     });
     // Weather Information Query
@@ -61,7 +85,12 @@ const Home = () => {
             <div className="flex flex-col w-full ">
                 <div className="h-screen lg:h-[800px] lg:overflow-y-scroll flex flex-col justify-between py-5">
                     <div className=" flex items-center justify-between px-5 ">
-                        <div className="cursor-pointer">
+                        <div
+                            className="cursor-pointer"
+                            onClick={() => {
+                                navigate("/search");
+                            }}
+                        >
                             <GoPlus />
                         </div>
                         <City isPending={isPending} location={data?.location} />
