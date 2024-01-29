@@ -30,7 +30,7 @@ const Home = () => {
     const navigate = useNavigate();
 
     // Geo location hook
-    const { getPosition } = useGeolocated({
+    useGeolocated({
         positionOptions: {
             enableHighAccuracy: true,
             timeout: 3000,
