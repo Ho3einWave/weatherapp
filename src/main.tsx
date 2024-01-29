@@ -2,7 +2,7 @@ import React from "react";
 import "./index.css";
 import routes from "./routes";
 import ReactDOM from "react-dom/client";
-import "./i18n";
+
 import { AnimatePresence } from "framer-motion";
 // React Router Dom
 import { createBrowserRouter, RouterProvider } from "react-router-dom";

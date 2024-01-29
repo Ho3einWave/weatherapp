@@ -14,12 +14,6 @@ dependencies:
   framer-motion:
     specifier: ^11.0.3
     version: 11.0.3(react-dom@18.2.0)(react@18.2.0)
-  i18next:
-    specifier: ^23.7.20
-    version: 23.7.20
-  i18next-browser-languagedetector:
-    specifier: ^7.2.0
-    version: 7.2.0
   localforage:
     specifier: ^1.10.0
     version: 1.10.0
@@ -1727,12 +1721,6 @@ packages:
     resolution: {integrity: sha512-KknJ50kTInJ7qIScF3jeaFRpMpE8/lfiTdzf/twXyPBLAGrLRTmkz3AdTnKeh40X8k9L2fdYwEp/42WGXIRGcg==}
     dependencies:
       void-elements: 3.1.0
-    dev: false
-
-  /i18next-browser-languagedetector@7.2.0:
-    resolution: {integrity: sha512-U00DbDtFIYD3wkWsr2aVGfXGAj2TgnELzOX9qv8bT0aJtvPV9CRO77h+vgmHFBMe7LAxdwvT/7VkCWGya6L3tA==}
-    dependencies:
-      '@babel/runtime': 7.23.9
     dev: false
 
   /i18next@23.7.20:
