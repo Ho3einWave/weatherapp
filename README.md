@@ -1,30 +1,13 @@
-# React + TypeScript + Vite
+[![wakatime](https://wakatime.com/badge/user/74e89342-a770-4ad7-80e1-f757c25e64ea/project/018d49cc-bb35-4f48-9fcc-60c9312475cc.svg)](https://wakatime.com/badge/user/74e89342-a770-4ad7-80e1-f757c25e64ea/project/018d49cc-bb35-4f48-9fcc-60c9312475cc) [![Netlify Status](https://api.netlify.com/api/v1/badges/5b33f438-a165-40b6-822c-9602b3be34e9/deploy-status)](https://app.netlify.com/sites/weather-hosein/deploys)
+# Weather App 🌦
+A Web Application that shows current and forecast weather information based on location and trow search 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Built With 
+- React
+- Vite
+- Typescript
+- TailwindCss
+- Tanstack Query
+- Zustand
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
