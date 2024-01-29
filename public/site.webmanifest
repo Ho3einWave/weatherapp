@@ -19,6 +19,6 @@
     "dir": "auto",
     "lang": "en-US",
     "display": "standalone",
-    "start_url": "https://rj.hoseinwave.ir/",
-    "scope": "https://rj.hoseinwave.ir/"
+    "start_url": "https://weather.projects.hoseinwave.ir/",
+    "scope": "https://weather.projects.hoseinwave.ir/"
 }
