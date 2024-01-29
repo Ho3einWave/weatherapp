@@ -4,12 +4,17 @@ import wmo, { wmoIcon } from "../utils/wmo";
 import { motion } from "framer-motion";
 import getDayOfWeek from "../utils/getDayOfWeek";
 import { WeatherApiRes } from "../services/useWeather.d";
+import { useNavigate } from "react-router-dom";
 const SevenDaysForecast = ({ data }: { data: WeatherApiRes }) => {
+    const navigate = useNavigate();
     return (
         <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="px-4 py-4 w-11/12 max-h-[300px] mx-auto flex-grow rounded-[35px] border-[3px] border-zinc-900"
+            onClick={() => {
+                navigate("/sevendays");
+            }}
+            className="px-4 py-4 w-11/12 max-h-[300px] mx-auto flex-grow rounded-[35px] border-[3px] border-zinc-900 cursor-pointer"
         >
             <div className="flex flex-col justify-between h-full gap-2">
                 <div className="flex items-center gap-1">

@@ -25,7 +25,7 @@ const CitySearch = ({
                         src={`http://purecatamphetamine.github.io/country-flag-icons/3x2/${country_code}.svg`}
                         width="58"
                         height="58"
-                        className="w-10 h-10 object-cover rounded-full"
+                        className="w-10 h-10 object-cover rounded-full bg-zinc-900/50"
                     />
                 </div>
                 <div className="text-sm">

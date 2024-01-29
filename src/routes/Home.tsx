@@ -17,11 +17,15 @@ import WindDirection from "../components/WindDirection";
 import Detail from "../components/Detail";
 import SunDetails from "../components/SunDetails";
 import { useCities } from "../context/cities";
+import { useWeatherData } from "../context/weather";
+import { motion } from "framer-motion";
+import Loader from "../components/Loader";
 const Home = () => {
     // i18n translation hook
     const { i18n } = useTranslation();
     const { location, setLocation } = useLocation();
     const { cities, addCity } = useCities();
+    const { setWeatherData } = useWeatherData();
     // navigation
     const navigate = useNavigate();
 
@@ -80,8 +84,17 @@ const Home = () => {
             });
     }, [location]);
 
+    useEffect(() => {
+        if (data) {
+            setWeatherData(data.weather);
+        }
+    }, [data]);
     return (
-        <div className="max-w-[600px] mx-auto lg:max-h-[90vh] lg:overflow-y-auto lg:mx-auto lg:border-black lg:border-[3px] lg:mt-10 pb-5 lg:rounded-[35px]">
+        <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="max-w-[600px] mx-auto lg:max-h-[90vh] lg:overflow-y-auto lg:mx-auto lg:border-black lg:border-[3px] lg:mt-10 pb-5 lg:rounded-[35px]"
+        >
             <div className="flex flex-col w-full ">
                 <div className="h-screen lg:h-[800px] lg:overflow-y-scroll flex flex-col justify-between py-5">
                     <div className=" flex items-center justify-between px-5 ">
@@ -94,7 +107,16 @@ const Home = () => {
                             <GoPlus />
                         </div>
                         <City isPending={isPending} location={data?.location} />
-                        <div onClick={getPosition} className="cursor-pointer">
+                        <div
+                            onClick={() => {
+                                location &&
+                                    getWeather({
+                                        lat: location.lat,
+                                        long: location.long,
+                                    });
+                            }}
+                            className="cursor-pointer"
+                        >
                             <MdOutlineRefresh />
                         </div>
                     </div>
@@ -103,6 +125,11 @@ const Home = () => {
                             <MainMetric data={data.weather} />
                             <SevenDaysForecast data={data.weather} />
                         </>
+                    )}
+                    {!data && (
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                            <Loader />
+                        </div>
                     )}
                 </div>
                 {data && <TwentyFourHourForCast data={data.weather} />}
@@ -118,7 +145,7 @@ const Home = () => {
                     </div>
                 )}
             </div>
-        </div>
+        </motion.div>
     );
 };
 

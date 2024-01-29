@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 const Search = () => {
     const navigate = useNavigate();
-    const [searchTerm, setSearchTerm] = useState("Moscow");
+    const [searchTerm, setSearchTerm] = useState("");
     const [searchResult, setSearchResult] = useState<SearchApiResponse>();
     useEffect(() => {
         const SearchForLocation = async () => {
@@ -27,6 +27,7 @@ const Search = () => {
         >
             <div className="w-full h-20 flex items-center justify-center gap-4 px-4">
                 <div
+                    className="cursor-pointer"
                     onClick={() => {
                         navigate("/");
                     }}
@@ -53,6 +54,12 @@ const Search = () => {
                     searchResult.results.map((item, idx) => (
                         <CitySearch key={`search-item-${idx}`} {...item} />
                     ))}
+                {!searchResult?.results && (
+                    <h1 className="flex items-center gap-1">
+                        <MdOutlineSearch />
+                        Please search for a city...
+                    </h1>
+                )}
             </div>
         </motion.div>
     );

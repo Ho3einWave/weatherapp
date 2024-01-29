@@ -20,7 +20,7 @@ const City = ({
             <div className="flex items-center relative">
                 {location ? location.city : t("location")}
                 <MdModeEdit
-                    className="absolute -right-4"
+                    className="absolute -right-4 cursor-pointer"
                     onClick={() => {
                         navigate("/locations");
                     }}

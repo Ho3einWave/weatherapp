@@ -14,10 +14,11 @@ const Locations = () => {
         <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="max-w-[600px] mx-auto lg:max-h-[90vh] lg:overflow-y-auto lg:mx-auto lg:border-black lg:border-[3px] lg:mt-10 pb-5 lg:rounded-[35px]"
+            className="lg:h-[800px] max-w-[600px] mx-auto lg:max-h-[90vh] lg:overflow-y-auto lg:mx-auto lg:border-black lg:border-[3px] lg:mt-10 pb-5 lg:rounded-[35px]"
         >
             <div className="w-full h-20 flex items-center justify-center gap-4 px-4">
                 <div
+                    className="cursor-pointer"
                     onClick={() => {
                         navigate("/");
                     }}
@@ -46,7 +47,7 @@ const Locations = () => {
                                     src={`http://purecatamphetamine.github.io/country-flag-icons/3x2/${item.location_details.countryCode}.svg`}
                                     width="58"
                                     height="58"
-                                    className="w-10 h-10 object-cover rounded-full"
+                                    className="w-10 h-10 object-cover rounded-full bg-zinc-900"
                                 />
                             </div>
                             <div className="text-sm">
@@ -55,7 +56,7 @@ const Locations = () => {
                         </div>
 
                         <div
-                            className="text-4xl"
+                            className="text-4xl cursor-pointer"
                             onClick={() => {
                                 removeCity(item);
                                 setLocation(cities[0]);
