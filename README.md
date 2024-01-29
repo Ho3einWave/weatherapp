@@ -9,5 +9,8 @@ A Web Application that shows current and forecast weather information based on l
 - TailwindCss
 - Tanstack Query
 - Zustand
+![WeatherApp](https://i.ibb.co/pZ1XtMM/screencapture-weather-projects-hoseinwave-ir-2024-01-29-22-35-11.png)
+![WeatherApp](https://i.ibb.co/ykVhvtc/screencapture-weather-projects-hoseinwave-ir-sevendays-2024-01-29-22-35-41.png)
+![WeatherApp](https://i.ibb.co/g4brQQj/screencapture-weather-projects-hoseinwave-ir-search-2024-01-29-22-35-27.png)
 
 
