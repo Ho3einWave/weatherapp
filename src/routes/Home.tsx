@@ -1,7 +1,6 @@
 // Library Import
 import { useEffect } from "react";
 import { useGeolocated } from "react-geolocated";
-import { useTranslation } from "react-i18next";
 
 import { useWeather } from "../services/useWeather";
 import MainMetric from "../components/MainMetric";
@@ -22,7 +21,6 @@ import { motion } from "framer-motion";
 import Loader from "../components/Loader";
 const Home = () => {
     // i18n translation hook
-    const { i18n } = useTranslation();
     const { location, setLocation } = useLocation();
     const { cities, addCity } = useCities();
     const { setWeatherData } = useWeatherData();
@@ -68,12 +66,6 @@ const Home = () => {
     });
     // Weather Information Query
     const { mutate: getWeather, data, isPending } = useWeather();
-
-    // Initilize i18n
-    useEffect(() => {
-        const lng = navigator.language;
-        i18n.changeLanguage(lng);
-    }, []);
 
     // get current weather information when location changes
     useEffect(() => {

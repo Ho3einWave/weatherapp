@@ -1,7 +1,6 @@
 import { WiCloud } from "react-icons/wi";
 import { FaRegCircleCheck } from "react-icons/fa6";
 import { motion } from "framer-motion";
-import { useTranslation } from "react-i18next";
 import { LocationName } from "../services/useWeather.d";
 import { MdModeEdit } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
@@ -14,11 +13,10 @@ const City = ({
     location: LocationName | undefined;
 }) => {
     const navigate = useNavigate();
-    const { t } = useTranslation();
     return (
         <div className="text-center relative">
             <div className="flex items-center relative">
-                {location ? location.city : t("location")}
+                {location ? location.city : "Location"}
                 <MdModeEdit
                     className="absolute -right-4 cursor-pointer"
                     onClick={() => {
